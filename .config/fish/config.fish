@@ -2,7 +2,11 @@ if status is-interactive
 	# CURSOR
 	#echo -ne '\eP\e]13;#5F5FAF\a'   # HC1
 	# echo -ne '\eP\e]12;#b46ade\a'   # HC1
-	echo -ne '\eP\e]12;#d64b70\a'   # m5
+	#echo -ne '\eP\e]12;#d64b70\a'   # m5
+	#echo -ne '\eP\e]12;#873a75\a'   # m5
+	#echo -ne '\eP\e]12;#3a8783\a'   # m5
+	echo -ne '\eP\e]12;#994886\a'   # m5
+	#7a2f5buu
 	# echo -ne '\eP\e]12;#679e8a\a'   # HC1
 	# echo -ne '\eP\e]12;#53cfcc\a'   # HC1
 	#echo -ne '\eP\e]12;#6d207a\a'	# HC2
@@ -22,7 +26,7 @@ set -U fish_history_max 200000
 
 set -Ux fish_term24bit 1
 
-set -gx EDITOR /usr/bin/vi
+set -gx EDITOR /usr/local/bin/vi
 set -gx GHQ_ROOT /home/utylee/.ghq
 
 # /tmp 용량부족으로 대용량 파일 설치시 문제가 생겨 /mnt/win 을 지정해줍니다
@@ -95,7 +99,7 @@ set -x LC_ALL ko_KR.UTF-8
 # set -l NODEHOME /usr/local/node-v22.18.0-linux-armv7l
 # set -l NODEHOME /usr/local/node-v22.18.0-linux-x64
 # set -l NODEHOME /usr/local/node-v22.22.0-linux-x64
-set -l NODEHOME /usr/local/node-v24.14.0-linux-x64 
+set -l NODEHOME /usr/local/node-v24.16.0-linux-x64 
 # set -x PATH $CLANGHOME/bin $PATH
 set -x PATH $HOME/.go/bin /usr/local/go1.17.3/bin $NODEHOME/bin $PATH
 
