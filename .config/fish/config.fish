@@ -30,7 +30,7 @@ set -gx EDITOR /usr/local/bin/vi
 set -gx GHQ_ROOT /home/utylee/.ghq
 
 # /tmp 용량부족으로 대용량 파일 설치시 문제가 생겨 /mnt/win 을 지정해줍니다
-# set -x TMPDIR $HOME/temp/.pip-tmp
+set -x TMPDIR $HOME/temp/.pip-tmp
 set -x PIP_CACHE_DIR $HOME/temp/.pip-cache
 
 # for llama-server of wsl2 ssh
