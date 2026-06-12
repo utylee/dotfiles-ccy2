@@ -5,7 +5,7 @@
     "port": 8080,
 
     // llama-server: --ctx-size
-    "ctx": 40960,
+    // "ctx": 40960,
 
     // llama-server: --threads
     "threads": 6,
@@ -17,7 +17,7 @@
     // mac metal: -1 / nvidia cuda: 적당히
     // llama-server: --n-gpu-layers
     "gpu_layers": -1
-    // "flag_flash_attn": 1  
+    // "flag_flash_attn": 1
 
     // 필요하면 여기에 raw 옵션을 추가할 수도 있음:
     // "extra_args": ["--no-mmap"]
@@ -46,6 +46,10 @@
       "gpu_layers": -1,
       "threads": 6
     },
+    "ccy2": {
+      "gpu_layers": -1,
+      "threads": 8
+    },
     "halo": {
       "gpu_layers": 99,
       "threads": 16
@@ -59,93 +63,346 @@
       "ubatch": 128
     },
     "fast": {
-	  "gpu_layers": 99
+      "gpu_layers": 99
     }
   },
 
   // 모델 파일명(부분매칭/정규식 느낌) -> 적용할 프로필/직접 override
   "model_rules": [
-	{
-	  "name": "gemma-3-4b-ud-q4",
-      "match": "gemma.*4b",
-      "override": { "ctx": 40960,
-					"batch": 2048,
-					"ubatch": 256,
-					"threads": 8,
-					"extra_args":
-						[
-							// "--no-mmap",
-							// "--flash-attn",
-							// "1",
-							"--chat-template-kwargs",
-							"{\"enable_thinking\": false}"
-						]
-      }
-    },
-	{
-	  "name": "qwen3-vl-4b",
-	  "match": "qwen3.*vl.*4b.*\\.gguf$",
-      "override": { "ctx": 40960,
-					"batch": 2048,
-					"ubatch": 256,
-					"threads": 8,
-					"extra_args":
-						[
-							// "--no-mmap",
-							// "--flash-attn",
-							// "1",
-							"--chat-template-kwargs",
-							"{\"enable_thinking\": false}"
-						]
-	 
-	  }
-	},
-	{
-	  "name": "glm-4.6-flash",
-      "match": "glm.*flash",
+    {
+      "name": "LFM2-8B-A1B-UD-Q5_K_XL.gguf",
+      "match": "lfm2.*8b.*a1b.*q5",
       "override": {
-        "extra_args":
-            [
-                "--no-mmap",
-                "--chat-template-kwargs",
-                "{\"enable_thinking\": false}"
-            ]
+        "ctx": 40960,
+        // "ctx": 32768,
+        "batch": 2048,
+        "ubatch": 256,
+        "threads": 4,
+        "extra_args": [
+          // "--temp",
+          // "0.6",
+          // "--top-p",
+          // "0.95",
+          // "--top-k",
+          // "20",
+          // "--min-p",
+          // "0.0",
+          // "--presence-penalty",
+          // "0.0",
+          // "--repeat-penalty",
+          // "1.0",
+          "-ctk",
+          "q8_0",
+          "-ctv",
+          "q8_0",
+          "--jinja"
+          // "--no-mmap"
+          // "--flash-attn",
+          // "1",
+          // "--chat-template-kwargs",
+          // "{\"enable_thinking\": false}"
+        ]
       }
     },
-	{
-	  "name": "qwen3-vl-8b",
-	  "match": "qwen3.*vl.*8b.*\\.gguf$",
-      "override": { "ctx": 20480,
-					"batch": 2048,
-					"ubatch": 256,
-					"threads": 8,
-					"extra_args":
-						[
-							// "--no-mmap",
-							// "--flash-attn",
-							// "1",
-							"--chat-template-kwargs",
-							"{\"enable_thinking\": false}"
-						]
-	 
-	  }
+    {
+      "name": "Nemotron-orchestrator-Opus4.5-IQ4",
+      "match": "Nemotron.*8b.*Claude.*distill.*iq4",
+      "override": {
+        "ctx": 40960,
+        // "ctx": 32768,
+        "batch": 2048,
+        "ubatch": 256,
+        "threads": 4,
+        "extra_args": [
+          // "--temp",
+          // "0.6",
+          // "--top-p",
+          // "0.95",
+          // "--top-k",
+          // "20",
+          // "--min-p",
+          // "0.0",
+          // "--presence-penalty",
+          // "0.0",
+          // "--repeat-penalty",
+          // "1.0",
+          "-ctk",
+          "q8_0",
+          "-ctv",
+          "q8_0",
+          "--jinja"
+          // "--no-mmap"
+          // "--flash-attn",
+          // "1",
+          // "--chat-template-kwargs",
+          // "{\"enable_thinking\": false}"
+        ]
+      }
+    },
+    {
+      "name": "qwen3.5-4b-q6",
+      "match": "qwen3.5.*4b.*q4",
+      "override": {
+        // "ctx": 40960,
+        "ctx": 81920,
+        // "ctx": 32768,
+        "batch": 2048,
+        "ubatch": 256,
+        "threads": 4
+        // "extra_args":
+        // 	[
+        // "--temp",
+        // "0.6",
+        // "--top-p",
+        // "0.95",
+        // "--top-k",
+        // "20",
+        // "--min-p",
+        // "0.0",
+        // "--presence-penalty",
+        // "0.0",
+        // "--repeat-penalty",
+        // "1.0",
+        // "-ctk",
+        // "q8_0",
+        // "-ctv",
+        // "q8_0"
+        // 		// "--no-mmap"
+        // 		// "--flash-attn",
+        // 		// "1",
+        // 		// "--chat-template-kwargs",
+        // 		// "{\"enable_thinking\": false}"
+        // 	]
+      }
+    },
+    {
+      "name": "qwen3.5-9b-q4",
+      "match": "qwen3.5.*9b",
+      "override": {
+        // "ctx": 40960,
+        "ctx": 81920,
+        // "ctx": 32768,
+        // "ctx": 20480,
+        "batch": 2048,
+        "ubatch": 256,
+        "threads": 4
+        // "extra_args":
+        // 	[
+        // "--temp",
+        // "0.6",
+        // "--top-p",
+        // "0.95",
+        // "--top-k",
+        // "20",
+        // "--min-p",
+        // "0.0",
+        // "--presence-penalty",
+        // "0.0",
+        // "--repeat-penalty",
+        // "1.0",
+        // "-ctk",
+        // "q8_0",
+        // "-ctv",
+        // "q8_0"
+        // 		// "--no-mmap"
+        // 		// "--flash-attn",
+        // 		// "1",
+        // 		// "--chat-template-kwargs",
+        // 		// "{\"enable_thinking\": false}"
+        // 	]
+      }
+    },
+    {
+      "name": "gpt-4o-distil-llama-3.1-8b-instruct",
+      "match": "gpt.*4o.*llama.*8b",
+      "override": {
+        "ctx": 20480,
+        "batch": 2048,
+        "ubatch": 256,
+        "threads": 8,
+        "extra_args": [
+          "-ctk",
+          "q8_0",
+          "-ctv",
+          "q8_0",
+          // "--no-mmap",
+          "--flash-attn",
+          "on"
+          // "--chat-template-kwargs",
+          // "{\"enable_thinking\": false}"
+        ]
+      }
+    },
+    // {
+    //   "name": "gemma-12b",
+    //   "match": "gemma.*12b",
+    //   "override": {
+    //     "ctx": 10240,
+    //     "batch": 2048,
+    //     "ubatch": 256,
+    //     "threads": 8,
+    //     "extra_args": [
+    //       "-ctk",
+    //       "q8_0",
+    //       "-ctv",
+    //       "q8_0",
+    //       // "--no-mmap",
+    //       "--flash-attn",
+    //       "1",
+    //       // "--chat-template-kwargs",
+    //       // "{\"enable_thinking\": false}"
+    //     ]
+    //   }
+    // },
+    {
+      "name": "gemma-3-4b-ud-q4",
+      "match": "gemma.*4b",
+      "override": {
+        // "ctx": 40960,
+        "ctx": 81920,
+        "batch": 2048,
+        "ubatch": 256,
+        "threads": 8,
+        "extra_args": [
+          // "--no-mmap",
+          // "--flash-attn",
+          // "1",
+          // "--chat-template-kwargs",
+          // "{\"enable_thinking\": false}"
+        ]
+      }
+    },
+    {
+      "name": "orchestrator-8b-opus-iq4",
+      "match": "orchestrator.*8b.*opus.*iq4",
+      "override": {
+        "ctx": 20480,
+        "batch": 2048,
+        "ubatch": 256,
+        "threads": 8,
+        "extra_args": [
+          // "--top-p",
+          // "0.95",
+          // "--top-k",
+          // "20",
+          // "--repeat-penalty",
+          // "1.0",
+          // "--temp",
+          // "1.0",
+          "-ctk",
+          "q8_0",
+          "-ctv",
+          "q8_0",
+          // "--no-mmap",
+          // "--flash-attn",
+          // "1",
+          // "--chat-template-kwargs",
+          // "{\"enable_thinking\": false}"
+        ]
+      }
+    },
+    {
+      "name": "qwen3-vl-4b-thinking",
+      "match": "qwen3.*vl.*4b.*thinking",
+      "override": {
+        "ctx": 40960,
+        "batch": 2048,
+        "ubatch": 256,
+        "threads": 8,
+        "extra_args": [
+          "--top-p",
+          "0.95",
+          "--top-k",
+          "20",
+          "--repeat-penalty",
+          "1.0",
+          "--temp",
+          "1.0",
 
-	  // "params": {
-		// // 텍스트 모델 공통 옵션은 기본값에서 가져오고,
-		// // VL 전용만 여기서 덧붙임
-		// "mmproj": "/home/utylee/temp/llm_models/mmproj/qwen3-vl-mmproj.gguf",
-		// "chat_template": "qwen" // 필요 시
-	  // }
-	},
+          // "--no-mmap",
+          // "--flash-attn",
+          // "1",
+          "--chat-template-kwargs",
+          "{\"enable_thinking\": false}"
+        ]
+      }
+    },
+    {
+      "name": "qwen3-vl-4b-instruct",
+      "match": "qwen3.*vl.*4b.*instruct",
+      "override": {
+        "ctx": 40960,
+        "batch": 2048,
+        "ubatch": 256,
+        "threads": 8,
+        "extra_args": [
+          // "--no-mmap",
+          // "--flash-attn",
+          // "1",
+          "--chat-template-kwargs",
+          "{\"enable_thinking\": false}"
+        ]
+      }
+    },
+    {
+      "name": "glm-4.6-flash",
+      "match": "glm.*4.6.*flash",
+      "override": {
+        "ctx": 20480,
+        "extra_args": [
+          "-ctk",
+          "q8_0",
+          "-ctv",
+          "q8_0",
+          "--top-p",
+          "0.6",
+          "--top-k",
+          "2",
+          "--temp",
+          "0.8",
+          "--repeat-penalty",
+          "1.1",
+          // "--no-mmap",
+          "--flash-attn",
+          "on"
+          // "--chat-template-kwargs",
+          // "{\"enable_thinking\": false}"
+        ]
+      }
+    },
+    {
+      "name": "qwen3-vl-8b",
+      "match": "qwen3.*vl.*8b.*",
+      "override": {
+        "ctx": 20480,
+        "batch": 2048,
+        "ubatch": 256,
+        "threads": 8,
+        "extra_args": [
+          // "--no-mmap",
+          "--flash-attn",
+          "on",
+          "--chat-template-kwargs",
+          "{\"enable_thinking\": false}"
+        ]
+      }
+
+      // "params": {
+      // // 텍스트 모델 공통 옵션은 기본값에서 가져오고,
+      // // VL 전용만 여기서 덧붙임
+      // "mmproj": "/home/utylee/temp/llm_models/mmproj/qwen3-vl-mmproj.gguf",
+      // "chat_template": "qwen" // 필요 시
+      // }
+    }
     // {
     //   "match": "phi",
     //   "use_profiles": ["safe"]
     //   // "override": { "ctx": 4096 }
     // },
-    {
-      "match": "lfm",
-      "use_profiles": ["fast"]
-    }
+    // {
+    //   "match": "lfm",
+    //   "use_profiles": ["fast"]
+    // }
     // {
     //   "match": "gpt-oss-20b",
     //   "use_profiles": ["safe"],
@@ -155,7 +412,6 @@
     //   "match": "qwen",
     //   "use_profiles": ["defaults"]
     // },
-
   ]
 
   // (선택) 특정 모델 파일명 "정확히 일치" override
@@ -163,4 +419,3 @@
   //   "Qwen2.5-Coder-14B-Q4_K_M.gguf": { "ctx": 8192, "batch": 1024, "ubatch": 256 }
   // }
 }
-
