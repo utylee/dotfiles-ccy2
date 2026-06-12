@@ -139,79 +139,79 @@
         ]
       }
     },
-    {
-      "name": "qwen3.5-4b-q6",
-      "match": "qwen3.5.*4b.*q4",
-      "override": {
-        // "ctx": 40960,
-        "ctx": 81920,
-        // "ctx": 32768,
-        "batch": 2048,
-        "ubatch": 256,
-        "threads": 4
-        // "extra_args":
-        // 	[
-        // "--temp",
-        // "0.6",
-        // "--top-p",
-        // "0.95",
-        // "--top-k",
-        // "20",
-        // "--min-p",
-        // "0.0",
-        // "--presence-penalty",
-        // "0.0",
-        // "--repeat-penalty",
-        // "1.0",
-        // "-ctk",
-        // "q8_0",
-        // "-ctv",
-        // "q8_0"
-        // 		// "--no-mmap"
-        // 		// "--flash-attn",
-        // 		// "1",
-        // 		// "--chat-template-kwargs",
-        // 		// "{\"enable_thinking\": false}"
-        // 	]
-      }
-    },
-    {
-      "name": "qwen3.5-9b-q4",
-      "match": "qwen3.5.*9b",
-      "override": {
-        // "ctx": 40960,
-        "ctx": 81920,
-        // "ctx": 32768,
-        // "ctx": 20480,
-        "batch": 2048,
-        "ubatch": 256,
-        "threads": 4
-        // "extra_args":
-        // 	[
-        // "--temp",
-        // "0.6",
-        // "--top-p",
-        // "0.95",
-        // "--top-k",
-        // "20",
-        // "--min-p",
-        // "0.0",
-        // "--presence-penalty",
-        // "0.0",
-        // "--repeat-penalty",
-        // "1.0",
-        // "-ctk",
-        // "q8_0",
-        // "-ctv",
-        // "q8_0"
-        // 		// "--no-mmap"
-        // 		// "--flash-attn",
-        // 		// "1",
-        // 		// "--chat-template-kwargs",
-        // 		// "{\"enable_thinking\": false}"
-        // 	]
-      }
-    },
+    // {
+    //   "name": "qwen3.5-4b-q6",
+    //   "match": "qwen3.5.*4b.*q4",
+    //   "override": {
+    //     // "ctx": 40960,
+    //     "ctx": 81920,
+    //     // "ctx": 32768,
+    //     "batch": 2048,
+    //     "ubatch": 256,
+    //     "threads": 4
+    //     // "extra_args":
+    //     // 	[
+    //     // "--temp",
+    //     // "0.6",
+    //     // "--top-p",
+    //     // "0.95",
+    //     // "--top-k",
+    //     // "20",
+    //     // "--min-p",
+    //     // "0.0",
+    //     // "--presence-penalty",
+    //     // "0.0",
+    //     // "--repeat-penalty",
+    //     // "1.0",
+    //     // "-ctk",
+    //     // "q8_0",
+    //     // "-ctv",
+    //     // "q8_0"
+    //     // 		// "--no-mmap"
+    //     // 		// "--flash-attn",
+    //     // 		// "1",
+    //     // 		// "--chat-template-kwargs",
+    //     // 		// "{\"enable_thinking\": false}"
+    //     // 	]
+    //   }
+    // },
+    // {
+    //   "name": "qwen3.5-9b-q4",
+    //   "match": "qwen3.5.*9b",
+    //   "override": {
+    //     // "ctx": 40960,
+    //     "ctx": 81920,
+    //     // "ctx": 32768,
+    //     // "ctx": 20480,
+    //     "batch": 2048,
+    //     "ubatch": 256,
+    //     "threads": 4
+    //     // "extra_args":
+    //     // 	[
+    //     // "--temp",
+    //     // "0.6",
+    //     // "--top-p",
+    //     // "0.95",
+    //     // "--top-k",
+    //     // "20",
+    //     // "--min-p",
+    //     // "0.0",
+    //     // "--presence-penalty",
+    //     // "0.0",
+    //     // "--repeat-penalty",
+    //     // "1.0",
+    //     // "-ctk",
+    //     // "q8_0",
+    //     // "-ctv",
+    //     // "q8_0"
+    //     // 		// "--no-mmap"
+    //     // 		// "--flash-attn",
+    //     // 		// "1",
+    //     // 		// "--chat-template-kwargs",
+    //     // 		// "{\"enable_thinking\": false}"
+    //     // 	]
+    //   }
+    // },
     {
       "name": "gpt-4o-distil-llama-3.1-8b-instruct",
       "match": "gpt.*4o.*llama.*8b",
