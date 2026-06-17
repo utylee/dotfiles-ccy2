@@ -47,7 +47,7 @@ set -x ROCM_PATH /opt/rocm
 
 # Strix Halo(RDNA 3.5) 타겟팅
 # set -x HSA_OVERRIDE_GFX_VERSION 11.5.0
-set -x HSA_OVERRIDE_GFX_VERSION 11.0.0
+# set -x HSA_OVERRIDE_GFX_VERSION 11.0.0
 # ===> upscaling 속도 상승 효과 32초 ---> 26초
 
 # SDMA 충돌 방지는 여전히 유효 (최신 드라이버에서도 안정성 확보)
@@ -61,7 +61,7 @@ set -x PYTORCH_CUDA_ALLOC_CONF "expandable_segments:True,max_split_size_mb:512,g
 # set -x PYTORCH_CUDA_ALLOC_CONF "expandable_segments:False,max_split_size_mb:512"
 
 # AMD 전용 가속 활성화
-set -x TORCH_ROCM_AOT_RDNA3_ENABLED 1
+# set -x TORCH_ROCM_AOT_RDNA3_ENABLED 1
 
 # # 고성능 칩셋이므로 메모리 할당 단위를 키웁니다 (512MB 권장)
 # set -x PYTORCH_HIP_ALLOC_CONF "garbage_collection_threshold:0.8,max_split_size_mb:512"
