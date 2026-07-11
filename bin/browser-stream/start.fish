@@ -3,7 +3,7 @@
 set DISPLAY_NUM :99
 set PROFILE "$HOME/.config/mozilla/firefox/4k7suz42.default"
 set HOST_IP 192.168.1.123
-set LOG_DIR "$HOME/browser-stream/logs"
+set LOG_DIR "$HOME/temp/bin/browser-stream/logs"
 set STREAM_URL rtsp://127.0.0.1:8554/live/browser
 
 if test (count $argv) -ge 1
