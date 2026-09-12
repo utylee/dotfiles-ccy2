@@ -46,8 +46,9 @@ set -gx LLS_LLAMA_BIN  /home/utylee/temp/llama.cpp/build/bin/llama-server
 set -x ROCM_PATH /opt/rocm
 
 # Strix Halo(RDNA 3.5) 타겟팅
-# set -x HSA_OVERRIDE_GFX_VERSION 11.5.0
+# # set -x HSA_OVERRIDE_GFX_VERSION 11.5.0
 # set -x HSA_OVERRIDE_GFX_VERSION 11.0.0
+# --> 전역 설정에서는 지우고 comfy.fish 로 직접 실행할 때 환경을 일단 추가해주게함
 # ===> upscaling 속도 상승 효과 32초 ---> 26초
 
 # SDMA 충돌 방지는 여전히 유효 (최신 드라이버에서도 안정성 확보)

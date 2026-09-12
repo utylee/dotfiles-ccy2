@@ -1,7 +1,8 @@
 #!/usr/bin/env fish
 
 set DISPLAY_NUM :99
-set PROFILE "$HOME/.config/mozilla/firefox/4k7suz42.default"
+# set PROFILE "$HOME/.config/mozilla/firefox/4k7suz42.default"
+set PROFILE "$HOME/.config/mozilla/firefox/hqx5b9lb.xvfb"
 set HOST_IP 192.168.1.123
 set LOG_DIR "$HOME/temp/bin/browser-stream/logs"
 set STREAM_URL rtsp://127.0.0.1:8554/live/browser
@@ -9,7 +10,7 @@ set STREAM_URL rtsp://127.0.0.1:8554/live/browser
 if test (count $argv) -ge 1
     set URL $argv[1]
 else
-    set URL https://hulk24.com
+    set URL https://www.hulk24.com
 end
 
 mkdir -p "$LOG_DIR"
